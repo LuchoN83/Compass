@@ -1,0 +1,4 @@
+# Ignore example patterns (fine-tune once repo is live)
+# This avoids noise from sample files or placeholder values
+# rule:AVD-*
+# path:docs/**

@@ -1,0 +1,6 @@
+region           = "eu-west-2"
+env              = "nonprod"
+name_prefix      = "cosight"
+tf_state_bucket  = "cosight-healthlake-tfstate-nonprod"
+tf_lock_table    = "tf-state-lock"
+logs_bucket_name = "cosight-healthlake-logs-nonprod"
