@@ -1,0 +1,93 @@
+<mxfile host="app.diagrams.net" modified="2025-10-23T01:45:12.982621" agent="python" version="22.0.8" type="device">
+  <diagram id="current-state-aws" name="CurrentState_AWS">
+    <mxGraphModel dx="1280" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="Cosight – Current State on AWS (eu-west-2 / London)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=20;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="640" y="20" width="640" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Accounts swimlanes -->
+        <mxCell id="lane_prod" value="Account: cosight-prod" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=28;rounded=1;fillColor=#e6f7ff;strokeColor=#1890ff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="560" height="420" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_nonprod" value="Account: cosight-nonprod" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=28;rounded=1;fillColor=#fff7e6;strokeColor=#fa8c16;" vertex="1" parent="1">
+          <mxGeometry x="640" y="80" width="560" height="420" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_security" value="Account: cosight-security" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=28;rounded=1;fillColor=#f6ffed;strokeColor=#52c41a;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="80" width="560" height="420" as="geometry"/>
+        </mxCell>
+
+        <!-- Region label -->
+        <mxCell id="region" value="Region: eu-west-2 (London)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#999999;fillColor=#fafafa;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="1760" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- PROD VPC -->
+        <mxCell id="vpc_prod" value="VPC (10.0.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1890ff;fillColor=#ffffff;dashed=1;" vertex="1" parent="lane_prod">
+          <mxGeometry x="20" y="40" width="520" height="320" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="subnet_prod_priv1" value="Private Subnet A (10.0.1.0/24)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#91d5ff;fillColor=#ffffff;" vertex="1" parent="vpc_prod">
+          <mxGeometry x="20" y="60" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="subnet_prod_priv2" value="Private Subnet B (10.0.2.0/24)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#91d5ff;fillColor=#ffffff;" vertex="1" parent="vpc_prod">
+          <mxGeometry x="280" y="60" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="endpoints_prod" value="VPC Endpoints: S3, CloudWatch, STS, KMS" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#91d5ff;fillColor=#f0faff;" vertex="1" parent="vpc_prod">
+          <mxGeometry x="20" y="180" width="480" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="services_prod" value="Active Services: EC2, S3, IAM, CloudWatch, AWS Config" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#91d5ff;fillColor=#ffffff;" vertex="1" parent="vpc_prod">
+          <mxGeometry x="20" y="250" width="480" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- NONPROD VPC -->
+        <mxCell id="vpc_nonprod" value="VPC (10.1.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#fa8c16;fillColor=#ffffff;dashed=1;" vertex="1" parent="lane_nonprod">
+          <mxGeometry x="20" y="40" width="520" height="320" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="subnet_nonprod_priv1" value="Private Subnet A (10.1.1.0/24)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#ffd591;fillColor=#ffffff;" vertex="1" parent="vpc_nonprod">
+          <mxGeometry x="20" y="60" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="subnet_nonprod_priv2" value="Private Subnet B (10.1.2.0/24)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#ffd591;fillColor=#ffffff;" vertex="1" parent="vpc_nonprod">
+          <mxGeometry x="280" y="60" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="endpoints_nonprod" value="VPC Endpoints: S3, CloudWatch, STS, KMS" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#ffd591;fillColor=#fff7e6;" vertex="1" parent="vpc_nonprod">
+          <mxGeometry x="20" y="180" width="480" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="services_nonprod" value="Active Services: EC2, S3, IAM, CloudWatch, AWS Config" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#ffd591;fillColor=#ffffff;" vertex="1" parent="vpc_nonprod">
+          <mxGeometry x="20" y="250" width="480" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- SECURITY account components -->
+        <mxCell id="security_services" value="Centralized Security Services" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#52c41a;fillColor=#ffffff;dashed=1;" vertex="1" parent="lane_security">
+          <mxGeometry x="20" y="40" width="520" height="320" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="security_tools" value="Security Hub (Org), GuardDuty (Org), CloudTrail (Org), AWS Config (Org), S3 Logs (Object Lock)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#95de64;fillColor=#f6ffed;" vertex="1" parent="security_services">
+          <mxGeometry x="20" y="60" width="480" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="planned_healthlake" value="Planned: Amazon HealthLake (FHIR Datastore, KMS encryption)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#d9d9d9;fillColor=#fafafa;fontColor=#999999;" vertex="1" parent="security_services">
+          <mxGeometry x="20" y="200" width="480" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Notes -->
+        <mxCell id="notes" value="Notes:&#xa;• Data residency: EU-West-2 only (GDPR).&#xa;• No public access to critical resources.&#xa;• S3 with Object Lock for logs.&#xa;• IaC planned: Terraform modules." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#cccccc;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="580" width="1760" height="120" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
